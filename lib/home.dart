@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class HomeApp extends StatefulWidget{
   
@@ -15,6 +16,12 @@ class HomeApp extends StatefulWidget{
 class HomeState extends State<HomeApp>{
 
   var iRadioButton = 0;
+  var cricketCheck = false;
+  var readingCheck = false;
+  var writingCheck = false;
+  var movieCheck = false;
+
+  var checkArray = [];
 
   @override
   Widget build(BuildContext context) {
@@ -65,8 +72,7 @@ class HomeState extends State<HomeApp>{
                         groupValue: iRadioButton, 
                         onChanged: (value){
                           setState(() {
-                            iRadioButton = 1;
-                            print("Male");                        
+                            genderSelection(1, "Male");                       
                           });
 
                         }
@@ -83,8 +89,7 @@ class HomeState extends State<HomeApp>{
                           groupValue: iRadioButton, 
                           onChanged: (value){
                             setState(() {
-                              iRadioButton=2;
-                              print("Female");                        
+                              genderSelection(2, "Female");                        
                             });
                   
                           }
@@ -94,12 +99,115 @@ class HomeState extends State<HomeApp>{
                     ),
                   ),
                 ],
-              )
+              ),
+              Row(
+                children: [
+                  Checkbox(
+                    value: readingCheck, 
+                    onChanged: (value){
+                      setState(() {
+                        readingCheck = value!;
+                        hobyMethod(value,"Reading");
+                        //print("Reading");
+                      });
+                    },
+                  ),
+                  Text(
+                    "Reading",
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                children: [
+                  Checkbox(
+                    value: writingCheck, 
+                    onChanged: (value){
+                      setState(() {
+                        writingCheck = value!;
+                        //print("Writing");
+                        hobyMethod(value,"Writing");
+                      });
+                    },
+                  ),
+                  Text(
+                    "Writing",
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                children: [
+                  Checkbox(
+                    value: movieCheck, 
+                    onChanged: (value){
+                      setState(() {
+                        movieCheck = value!;
+                        //print("Movie");
+                        hobyMethod(value,"Movie");
+                      });
+                    },
+                  ),
+                  Text(
+                    "Movie",
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                children: [
+                  Checkbox(
+                    value: cricketCheck, 
+                    onChanged: (value){
+                      setState(() {
+                        cricketCheck = value!;
+                        //print("Cricket");
+                        hobyMethod(value,"Cricket");
+                      });
+                    },
+                  ),
+                  Text(
+                    "Cricket",
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold
+                    ),
+                  ),
+                ],
+              ),
             ],
           ),
         ),
       ),
     );
+  }
+
+  void genderSelection(genderValue,genderName){
+    iRadioButton = genderValue;
+    Fluttertoast.showToast(msg: genderName,toastLength: Toast.LENGTH_LONG);
+  }
+
+  hobyMethod(value,name){
+    if(value){
+      checkArray.add(name);
+    }
+    else{
+      checkArray.removeWhere((element) => element == name);  
+    }
+    print(checkArray);
   }
 
 }
