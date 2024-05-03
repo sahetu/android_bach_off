@@ -1,8 +1,9 @@
 import 'package:android_bach_off/login.dart';
+import 'package:android_bach_off/splash.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(LoginMain());
+  runApp(SplashMain());
 }
 
 class MyApp extends StatelessWidget {
@@ -12,6 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo New',
       theme: ThemeData(
         // This is the theme of your application.

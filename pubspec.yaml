@@ -61,6 +61,13 @@ flutter:
 
   assets:
     - images/quickheal1.png
+    - images/alert.png
+    - images/badge.png
+    - images/coin.png
+    - images/correct.png
+    - images/pause.png
+    - images/share.png
+    - images/user_vector.png
 
 
   # To add assets to your application, add an assets section, like this:
