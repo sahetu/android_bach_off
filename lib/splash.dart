@@ -1,11 +1,13 @@
 import 'dart:async';
 
+import 'package:android_bach_off/addList.dart';
 import 'package:android_bach_off/bottom_nav.dart';
 import 'package:android_bach_off/custom_list.dart';
 import 'package:android_bach_off/listdemo.dart';
 import 'package:android_bach_off/login.dart';
 import 'package:android_bach_off/navigation_demo.dart';
 import 'package:android_bach_off/tab_demo.dart';
+import 'package:android_bach_off/tween_animation.dart';
 import 'package:flutter/material.dart';
 
 class SplashMain extends StatelessWidget{
@@ -39,7 +41,7 @@ class SplashApp extends State<SplashState>{
 
   Future<Timer> startTimerMethod() async {
     return Timer(Duration(seconds: 3), () { 
-      Navigator.push(context, MaterialPageRoute(builder: (_)=>BottomNavMain()));
+      Navigator.push(context, MaterialPageRoute(builder: (_)=>AddListMain()));
      });
   }
 
