@@ -6,6 +6,8 @@ import 'package:android_bach_off/custom_list.dart';
 import 'package:android_bach_off/listdemo.dart';
 import 'package:android_bach_off/login.dart';
 import 'package:android_bach_off/navigation_demo.dart';
+import 'package:android_bach_off/razorpay_demo.dart';
+import 'package:android_bach_off/sqlite_demo.dart';
 import 'package:android_bach_off/tab_demo.dart';
 import 'package:android_bach_off/tween_animation.dart';
 import 'package:flutter/material.dart';
@@ -41,7 +43,7 @@ class SplashApp extends State<SplashState>{
 
   Future<Timer> startTimerMethod() async {
     return Timer(Duration(seconds: 3), () { 
-      Navigator.push(context, MaterialPageRoute(builder: (_)=>AddListMain()));
+      Navigator.push(context, MaterialPageRoute(builder: (_)=>RazorpayDemoApp()));
      });
   }
 
