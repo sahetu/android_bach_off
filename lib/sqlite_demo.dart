@@ -30,143 +30,122 @@ class SqliteState extends State<SqliteMain>{
         body: Container(
           child: Form(
             key: formKey,
-            child: Column(
-              children: [
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20.0,vertical: 10.0),
-                  child: TextFormField(
-                    keyboardType: TextInputType.emailAddress,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(10.0)),
-                      labelText: "Name",
-                      prefixIcon: Icon(Icons.person),
-                    ),
-                    validator: (name){
-                      if(name!.isEmpty){
-                        return "Name Required";
-                      }
-                      else{
-                        return null;
-                      }
-                    },
-                    onSaved: (name){
-                      sName = name;
-                    },
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20.0,vertical: 10.0),
-                  child: TextFormField(
-                    keyboardType: TextInputType.emailAddress,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(10.0)),
-                      labelText: "Email Id",
-                      prefixIcon: Icon(Icons.email),
-                    ),
-                    validator: (email){
-                      if(email!.isEmpty){
-                        return "Email Id Required";
-                      }
-                      else if(!RegExp(emailPattern).hasMatch(email)){
-                        return "Valid Email Id Required";
-                      }
-                      else{
-                        return null;
-                      }
-                    },
-                    onSaved: (email){
-                      sEmail = email;
-                    },
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20.0,vertical: 10.0),
-                  child: TextFormField(
-                    keyboardType: TextInputType.phone,
-                    maxLength: 10,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(10.0)),
-                      labelText: "Contact No.",
-                      prefixIcon: Icon(Icons.phone),
-                    ),
-                    validator: (contact){
-                      if(contact!.isEmpty){
-                        return "Contact No. Required";
-                      }
-                      else if(contact.length<10 || contact.length>10){
-                        return "Valid Contact No. Required";
-                      }
-                      else{
-                        return null;
-                      }
-                    },
-                    onSaved: (contact){
-                      sContact = contact;
-                    },
-                  ),
-                ),
-                Padding(
-                  //padding: EdgeInsets.only(top: 10,bottom: 10,left: 20,right: 20),
-                  padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
-                  child: TextFormField(
-                    obscureText: true,
-                    keyboardType: TextInputType.text,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(10.0)),
-                      labelText: "Password",
-                      suffixIcon: Icon(Icons.lock)
-                    ),
-                    validator: (password){
-                      if(password!.isEmpty){
-                        return "Password Required";
-                      }
-                      else if(password.length<6){
-                        return "Min. 6 Char Password Required";
-                      }
-                      else{
-                        return null;
-                      }
-                    },
-                    onSaved: (password){
-                      sPassword = password;
-                    },
-                  ),
-                ),
-                Container(
-                  color: Colors.blueGrey[200],
-                  width: 150,
-                  height: 50,
-                  child: TextButton(onPressed: (){
-                    if(formKey.currentState!.validate()){
-                      formKey.currentState!.save();
-                      insertData();
-                    }
-          
-                  }, child: 
-                  Text(
-                    "Insert",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20.0),
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20.0,vertical: 10.0),
+                    child: TextFormField(
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(borderRadius: BorderRadius.circular(10.0)),
+                        labelText: "Name",
+                        prefixIcon: Icon(Icons.person),
                       ),
+                      validator: (name){
+                        if(name!.isEmpty){
+                          return "Name Required";
+                        }
+                        else{
+                          return null;
+                        }
+                      },
+                      onSaved: (name){
+                        sName = name;
+                      },
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top : 10.0),
-                    child: Container(
+                    padding: EdgeInsets.symmetric(horizontal: 20.0,vertical: 10.0),
+                    child: TextFormField(
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(borderRadius: BorderRadius.circular(10.0)),
+                        labelText: "Email Id",
+                        prefixIcon: Icon(Icons.email),
+                      ),
+                      validator: (email){
+                        if(email!.isEmpty){
+                          return "Email Id Required";
+                        }
+                        else if(!RegExp(emailPattern).hasMatch(email)){
+                          return "Valid Email Id Required";
+                        }
+                        else{
+                          return null;
+                        }
+                      },
+                      onSaved: (email){
+                        sEmail = email;
+                      },
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20.0,vertical: 10.0),
+                    child: TextFormField(
+                      keyboardType: TextInputType.phone,
+                      maxLength: 10,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(borderRadius: BorderRadius.circular(10.0)),
+                        labelText: "Contact No.",
+                        prefixIcon: Icon(Icons.phone),
+                      ),
+                      validator: (contact){
+                        if(contact!.isEmpty){
+                          return "Contact No. Required";
+                        }
+                        else if(contact.length<10 || contact.length>10){
+                          return "Valid Contact No. Required";
+                        }
+                        else{
+                          return null;
+                        }
+                      },
+                      onSaved: (contact){
+                        sContact = contact;
+                      },
+                    ),
+                  ),
+                  Padding(
+                    //padding: EdgeInsets.only(top: 10,bottom: 10,left: 20,right: 20),
+                    padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+                    child: TextFormField(
+                      obscureText: true,
+                      keyboardType: TextInputType.text,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(borderRadius: BorderRadius.circular(10.0)),
+                        labelText: "Password",
+                        suffixIcon: Icon(Icons.lock)
+                      ),
+                      validator: (password){
+                        if(password!.isEmpty){
+                          return "Password Required";
+                        }
+                        else if(password.length<6){
+                          return "Min. 6 Char Password Required";
+                        }
+                        else{
+                          return null;
+                        }
+                      },
+                      onSaved: (password){
+                        sPassword = password;
+                      },
+                    ),
+                  ),
+                  Container(
                     color: Colors.blueGrey[200],
                     width: 150,
                     height: 50,
                     child: TextButton(onPressed: (){
                       if(formKey.currentState!.validate()){
                         formKey.currentState!.save();
-                        updateData();
+                        insertData();
                       }
-                            
+                      
                     }, child: 
                     Text(
-                      "Update",
+                      "Insert",
                       style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
@@ -174,67 +153,90 @@ class SqliteState extends State<SqliteMain>{
                         ),
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top : 10.0),
-                    child: Container(
-                    color: Colors.blueGrey[200],
-                    width: 150,
-                    height: 50,
-                    child: TextButton(onPressed: (){
-                      formKey.currentState!.save();
-                      deleteData();
-                    }, child: 
-                    Text(
-                      "Delete",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20.0),
+                    Padding(
+                      padding: const EdgeInsets.only(top : 10.0),
+                      child: Container(
+                      color: Colors.blueGrey[200],
+                      width: 150,
+                      height: 50,
+                      child: TextButton(onPressed: (){
+                        if(formKey.currentState!.validate()){
+                          formKey.currentState!.save();
+                          updateData();
+                        }
+                              
+                      }, child: 
+                      Text(
+                        "Update",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20.0),
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top : 10.0),
-                    child: Container(
-                    color: Colors.blueGrey[200],
-                    width: 150,
-                    height: 50,
-                    child: TextButton(onPressed: (){
-                      getAllData();
-                    }, child: 
-                    Text(
-                      "Show All",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20.0),
+                    Padding(
+                      padding: const EdgeInsets.only(top : 10.0),
+                      child: Container(
+                      color: Colors.blueGrey[200],
+                      width: 150,
+                      height: 50,
+                      child: TextButton(onPressed: (){
+                        formKey.currentState!.save();
+                        deleteData();
+                      }, child: 
+                      Text(
+                        "Delete",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20.0),
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top : 10.0),
-                    child: Container(
-                    color: Colors.blueGrey[200],
-                    width: 150,
-                    height: 50,
-                    child: TextButton(onPressed: (){
-                      formKey.currentState!.save();
-                      getSearchData();
-                    }, child: 
-                    Text(
-                      "Search",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20.0),
+                    Padding(
+                      padding: const EdgeInsets.only(top : 10.0),
+                      child: Container(
+                      color: Colors.blueGrey[200],
+                      width: 150,
+                      height: 50,
+                      child: TextButton(onPressed: (){
+                        getAllData();
+                      }, child: 
+                      Text(
+                        "Show All",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20.0),
+                          ),
                         ),
                       ),
                     ),
-                  ),
-              ],
+                    Padding(
+                      padding: const EdgeInsets.only(top : 10.0),
+                      child: Container(
+                      color: Colors.blueGrey[200],
+                      width: 150,
+                      height: 50,
+                      child: TextButton(onPressed: (){
+                        formKey.currentState!.save();
+                        getSearchData();
+                      }, child: 
+                      Text(
+                        "Search",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20.0),
+                          ),
+                        ),
+                      ),
+                    ),
+                ],
+              ),
             ),
           ),
         ),

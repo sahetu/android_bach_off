@@ -40,6 +40,10 @@ dependencies:
   sqflite: ^2.2.8+4
   path_provider: ^2.1.1
   razorpay_web: ^1.4.2
+  connectivity_plus: ^5.0.1
+  http: ^0.13.6
+  shared_preferences: ^2.2.2
+
 
 dev_dependencies:
   flutter_test:

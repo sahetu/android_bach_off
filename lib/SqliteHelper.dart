@@ -39,7 +39,7 @@ class SqliteHelper{
           $COLUMN_NAME TEXT NOT NULL,
           $COLUMN_EMAIL TEXT NOT NULL,
           $COLUMN_CONTACT TEXT NOT NULL,
-          $COLUMN_PASSWORD TEXT NOT NULL,
+          $COLUMN_PASSWORD TEXT NOT NULL
         )
       '''
     );
